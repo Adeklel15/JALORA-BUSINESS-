@@ -1,0 +1,232 @@
+JALORA — MASTER PROMPT TERPADU FINAL
+Audit Project • Google AI Studio • GitHub • Supabase • Keamanan • Implementasi • Pengujian
+
+PERAN DAN TUJUAN
+Bertindak sebagai tim profesional yang terdiri atas software architect, frontend/backend engineer, database engineer, UI/UX designer, ahli POS dan akuntansi, security engineer, DevOps engineer, dan QA engineer.
+
+Bangun dan lanjutkan JALORA, platform manajemen bisnis terpadu untuk berbagai jenis toko dan usaha di Indonesia.
+
+Nama: JALORA
+Nama lengkap: JALORA Business Management Platform
+Tagline: Satu Sistem, Kendali Seluruh Bisnis.
+Kredit: Dibuat oleh Abdul Jalil.
+
+Jangan hanya menghasilkan mockup. Tujuannya adalah aplikasi yang berfungsi dengan autentikasi, database persisten, izin yang benar, transaksi konsisten, penanganan error, dan tes yang bisa dibuktikan. Tidak ada prompt yang menjamin bebas semua kendala; identifikasi, laporkan, dan perbaiki masalah yang ditemukan tanpa mengarang status.
+
+1. AUDIT PROJECT SEBELUM MENGUBAH KODE
+
+Mulai dengan memeriksa project aktual yang sedang terbuka di Google AI Studio:
+- Repository dan branch GitHub yang benar, serta status impor/sinkronisasi.
+- Framework, package manager, entry point, folder, dan dependensi.
+- Routing, komponen, autentikasi, database, dan environment variables.
+- Inisialisasi Supabase client dan semua tempat variabel konfigurasi dipakai.
+- Error build, TypeScript, runtime, database, dan konfigurasi.
+- Fitur yang sudah benar dan harus dipertahankan.
+- Apakah ada data produksi atau migrasi berisiko.
+
+Jangan menulis ulang seluruh aplikasi sebelum audit. Jangan membuat repository baru jika yang benar sudah ada. Jangan menghapus atau menimpa kode yang berfungsi tanpa alasan teknis yang jelas.
+
+Laporkan ringkas: SIAP DIGUNAKAN, PERLU DIPERBAIKI, MEMBUTUHKAN AKSES/KONFIGURASI. Setelah itu kerjakan tahap aman yang dapat dilakukan.
+
+Jangan mengklaim telah mengakses GitHub, melakukan commit, menghubungkan Supabase, atau menjalankan tes tanpa bukti aktual.
+
+2. GITHUB DAN AKSES GOOGLE AI STUDIO
+
+Gunakan repository JALORA yang dipilih pengguna. Jika belum diimpor, pandu pengguna mengimpor repository dan branch yang benar melalui fitur resmi yang tersedia. Pastikan status sinkronisasi nyata, bukan sekadar akun GitHub yang terhubung.
+
+Tinjau perubahan sebelum commit/sinkronisasi. Jangan mengubah branch utama atau menimpa pekerjaan pengguna tanpa konfirmasi yang diperlukan. Jika akses tidak tersedia, jelaskan akses yang tepat, alasannya, dan langkah pengguna. Jangan meminta password atau token rahasia melalui chat.
+
+3. SUPABASE — KONFIGURASI DAN VALIDASI
+
+Gunakan Supabase sebagai backend jika project memang menggunakannya atau sudah dikonfigurasi untuk itu:
+- Supabase Auth.
+- PostgreSQL.
+- Row Level Security (RLS).
+- Supabase Storage.
+- Edge Functions/backend tepercaya untuk operasi sensitif bila diperlukan.
+- Migrasi database yang dapat ditinjau.
+
+Audit variabel lingkungan dan kode yang memakainya. Screenshot konfigurasi sebelumnya menunjukkan kolom bernama VITE_SUPABASE_URL dan kolom kedua terpotong, kemungkinan VITE_SUPABASE_ANON_KEY. Jangan menebak nama lengkap: periksa kode inisialisasi dan penggunaan variabel terlebih dahulu.
+
+Untuk Vite, pola yang mungkin dipakai adalah:
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+atau VITE_SUPABASE_PUBLISHABLE_KEY
+Gunakan hanya nama yang cocok dengan kode. Jangan mengganti nama variabel tanpa memperbarui semua pemakaiannya.
+
+Ambil Project URL dan public/publishable key dari project Supabase yang benar. Jika belum tersedia, beri instruksi tepat untuk mendapatkannya. Jangan mengarang kredensial.
+
+Keamanan:
+- Publishable/anon key hanya boleh digunakan pada frontend jika RLS dan kebijakan akses sudah benar.
+- Jangan pernah menaruh service-role key, secret key, password database, token privat, atau kredensial GitHub di frontend atau repository.
+- Jangan meminta rahasia melalui percakapan. Gunakan environment variables/secret manager resmi.
+- Jangan menampilkan nilai rahasia ke log atau laporan.
+- Jangan mengunggah .env yang berisi rahasia ke GitHub.
+- Operasi administratif harus melalui backend tepercaya, bukan dari browser.
+
+Setelah pengguna memasukkan konfigurasi melalui mekanisme aman dan menekan Apply, lakukan tes yang tersedia:
+1. Konfigurasi dapat dibaca aplikasi.
+2. Build berjalan atau error dicatat.
+3. Supabase client berhasil diinisialisasi.
+4. Koneksi ke Supabase berhasil.
+5. Autentikasi dapat diinisialisasi.
+6. Database dapat dibaca/ditulis sesuai izin pada lingkungan tes.
+7. RLS menolak akses yang tidak sah.
+8. Storage mematuhi kebijakan.
+9. Error koneksi dan kredensial ditangani aman.
+
+Laporkan setiap item sebagai BERHASIL, GAGAL, atau BELUM DIUJI, sertakan bukti yang tidak mengandung rahasia. Environment variable terisi bukan bukti koneksi. Preview UI bukan bukti database terhubung.
+
+Jika koneksi gagal, jelaskan error yang relevan dan langkah perbaikan. Jangan menghapus atau mereset database produksi. Sebelum migrasi, periksa skema dan data yang ada, siapkan migration yang aman, dan minta persetujuan jika ada perubahan destruktif.
+
+4. DESAIN DAN IDENTITAS JALORA
+
+Gunakan desain profesional, elegan, modern, bersih, dan responsif untuk HP/tablet/desktop.
+
+Palet:
+- #173D32 deep forest green
+- #2F7D5B primary green
+- #F3F6F2 background
+- #D8E6DD soft green
+- putih untuk surface
+
+Gunakan sidebar desktop, navigasi mobile, header konsisten, kartu sederhana, glassmorphism ringan pada modal, loading skeleton, empty state, error state, form dengan label/validasi, kontras yang baik, dan target sentuh nyaman. Hindari animasi berat pada POS.
+
+Gunakan ikon Lucide valid dan konsisten, misalnya:
+layout-dashboard, log-in, user-plus, log-out, user-round, store, image-plus, shopping-cart, package, boxes, clipboard-list, truck, users-round, wallet, chart-no-axes-combined, settings, shield-check, refresh-cw, printer, bell, circle-help.
+
+Jangan membuat tombol dekoratif yang tidak berfungsi. Tampilkan “Dibuat oleh Abdul Jalil” pada halaman Tentang. Gunakan gambar referensi pembuat hanya jika aset tersedia; jangan menjadikannya pengganti logo toko.
+
+5. DASHBOARD PUBLIK DAN AUTENTIKASI
+
+Dashboard publik bisa dibuka tanpa login dan menampilkan identitas JALORA, deskripsi, fitur, manfaat, Login, Daftar, Bantuan, Privasi, dan Tentang. Jangan menampilkan data bisnis privat atau angka fiktif sebagai data nyata.
+
+Belum login: tampilkan Login dan Daftar.
+Sudah login: tampilkan nama pengguna, toko aktif, profil, dan Logout.
+
+Login harus memiliki validasi, loading, error yang jelas, pemulihan akses, dan tautan daftar.
+
+Alur daftar:
+1. Nama dan nomor HP.
+2. Verifikasi melalui metode autentikasi yang tersedia.
+3. Lengkapi profil.
+4. Buat toko atau bergabung melalui undangan resmi.
+5. Buat PIN transaksi.
+6. Masuk ke dashboard.
+
+OTP WhatsApp hanya boleh dinyatakan aktif jika provider/backend dan pengiriman sudah dikonfigurasi serta diuji. Jangan membuat OTP palsu.
+
+Jika pengunjung ingin menyimpan profil, membuat toko, atau mengunggah logo, arahkan ke Login/Daftar. Setelah autentikasi, lanjutkan ke halaman tujuan bila aman. Jangan menyimpan data privat sebelum otorisasi berhasil.
+
+Logout harus mengakhiri sesi, mengarahkan ke dashboard publik, dan mencegah akses kembali ke halaman privat tanpa autentikasi. Logout tidak menghapus data server.
+
+6. ORGANISASI, TOKO, CABANG, DAN PERAN
+
+Dukung banyak organisasi/toko/cabang, pemilik, manajer, kasir, undangan yang dapat dicabut, pemilihan toko aktif, laporan cabang, dan konsolidasi organisasi.
+
+Gunakan prinsip least privilege. Periksa izin di server, bukan hanya menyembunyikan tombol. Uji bahwa pengguna toko A tidak dapat membaca atau mengubah data toko B dengan manipulasi URL, request, atau ID.
+
+7. PROFIL TOKO DAN LOGO
+
+Sediakan ubah nama toko, tambah/ganti/hapus logo, ikon bawaan, ubah profil, dan kelola profil cabang sesuai izin. Validasi ukuran/jenis file dan gunakan Storage dengan kebijakan benar. Perubahan tersimpan harus tersinkron ke perangkat lain. Menghapus logo tidak boleh menghapus transaksi atau produk.
+
+8. PIN DAN KEAMANAN
+
+Sediakan PIN transaksi enam digit yang berbeda dari password. Simpan hash yang sesuai, batasi percobaan, sediakan pemulihan aman, dan terapkan otorisasi untuk diskon besar, retur, pembatalan, dan penyesuaian stok. Jangan mencatat PIN, OTP, password, atau token ke log. PIN bukan pengganti autentikasi.
+
+9. PRODUK, INVENTARIS, PEMBELIAN
+
+Sediakan produk, kategori, SKU/barcode opsional, satuan dan konversi, harga beli/jual, stok, batas stok minimum, gambar/deskripsi, pemasok, pembelian, penerimaan barang, transfer cabang, stok opname, retur, barang rusak/hilang/kedaluwarsa, riwayat stok, dan peringatan stok rendah.
+
+Produk baru memiliki stok nol. Harga jual harus valid sebelum dijual. Saldo awal stok hanya melalui proses eksplisit dan tercatat. Gunakan moving weighted average untuk penilaian persediaan. Nonaktifkan stok negatif secara default. Semua perubahan stok tercatat dan konsisten dengan transaksi database.
+
+10. KASIR DAN POS
+
+Sediakan pencarian produk, barcode scanner kompatibel, keranjang, kuantitas, diskon/pajak bila dikonfigurasi, tunai, pencatatan pembayaran digital, kembalian, sesi kasir, riwayat, retur, dan pembatalan sesuai izin.
+
+Simpan transaksi secara atomik. Gunakan idempotency key untuk mencegah transaksi ganda. Setelah transaksi tersimpan, tawarkan cetak struk, bagikan via WhatsApp, atau lewati. Cetak ulang tidak boleh membuat transaksi baru. Membuka WhatsApp bukan bukti pesan terkirim. Pembayaran digital hanya dinyatakan berhasil setelah konfirmasi provider; pencatatan manual harus dilabeli dengan jujur.
+
+11. PRINTER
+
+Sediakan pilihan printer, default, test print, kertas 58/80 mm, jumlah salinan, auto-print opsional, status, antrean/retry, dan fallback system print. Bluetooth, USB, LAN, dan Wi-Fi hanya didukung jika browser/perangkat/protokol kompatibel. Jangan menjanjikan koneksi otomatis universal.
+
+12. KEUANGAN DAN AKUNTANSI
+
+Gunakan double-entry accounting. Sediakan daftar akun, jurnal, buku besar, neraca saldo, laba rugi, neraca, arus kas, piutang, utang, pelunasan, rekonsiliasi, penutupan periode, dan laporan cabang.
+
+Total debit harus sama dengan kredit. Gunakan NUMERIC/DECIMAL untuk uang. Pisahkan kas fisik, bank, dan clearing pembayaran digital. Jangan mengedit/menghapus transaksi posted secara diam-diam; gunakan retur, pembatalan terkendali, dan jurnal pembalik. Pastikan penjualan, pembayaran, stok, dan jurnal konsisten.
+
+13. REKONSILIASI DAN AUDIT LOG
+
+Kas yang diharapkan = saldo awal + penerimaan tunai valid − pengeluaran tunai valid.
+Selisih = kas fisik − kas yang diharapkan.
+
+Tampilkan saldo awal, penerimaan, pengeluaran, kas yang diharapkan, kas fisik, selisih, catatan, dan persetujuan sesuai peran.
+
+Audit log mencatat pengguna, toko, waktu, tindakan, objek, hasil, dan perubahan relevan. Lindungi audit log dari perubahan pengguna biasa.
+
+14. ONLINE/OFFLINE DAN SINKRONISASI
+
+Server adalah sumber data utama. Gunakan IndexedDB dan antrean sinkronisasi jika diperlukan. Tampilkan status belum tersinkron, sedang tersinkron, berhasil, gagal, atau memerlukan tindakan. Gunakan ID unik, idempotency key, validasi server, dan penanganan konflik.
+
+Jangan menimpa perubahan tanpa strategi konflik. Saat offline, tampilkan waktu sinkronisasi terakhir. Jangan mengklaim stok global mutakhir atau pembayaran digital berhasil tanpa konfirmasi provider. Data server tersedia di perangkat baru sesuai izin; data offline yang belum tersinkron mungkin masih memerlukan perangkat asal.
+
+15. LAPORAN DAN NOTIFIKASI
+
+Sediakan laporan penjualan menurut waktu, produk, kategori, kasir, cabang; laba rugi; neraca; arus kas; nilai persediaan; selisih stok; umur piutang/utang; rekonsiliasi kas; diskon/retur; aktivitas pengguna. Sediakan notifikasi stok rendah, jatuh tempo, kegagalan sinkronisasi, dan peristiwa penting. Hindari penghitungan ganda pada laporan multi-cabang.
+
+16. BACKUP DAN PEMULIHAN
+
+Sediakan backup sesuai kemampuan infrastruktur, retensi, pembatasan akses, ekspor, pemantauan kegagalan, prosedur restore, dan pengujian pemulihan. Jangan menyatakan backup berhasil tanpa bukti. Ekspor CSV bukan pengganti backup database penuh.
+
+17. MENU APLIKASI
+
+Dashboard, Kasir, Produk, Inventaris, Pembelian, Pemasok, Pelanggan, Keuangan, Laporan, Cabang, Pengguna/Peran, Audit, Sinkronisasi, Printer, Profil Toko, Pengaturan Akun, Bantuan, Masukan, Beri Rating, Bagikan Aplikasi, Tentang JALORA, Logout.
+
+Katalog dan permintaan dagang merupakan fitur opsional. Jangan membangun marketplace penuh sebelum fitur inti stabil. Setiap tombol harus memiliki fungsi nyata.
+
+18. DATABASE
+
+Minimal siapkan:
+profiles, organizations, stores, store_memberships, roles, permissions, products, categories, units, unit_conversions, stock_balances, stock_movements, suppliers, purchases, purchase_items, customers, sales, sale_items, payments, returns, accounts, journal_entries, journal_lines, cash_sessions, cash_movements, receivables, payables, audit_logs, sync_operations, idempotency_keys, notifications.
+
+Gunakan ID unik, foreign keys, constraint, index, dan aturan penghapusan yang melindungi riwayat. Semua tabel bisnis harus memiliki model kepemilikan dan akses jelas. Buat migrasi yang dapat ditinjau dan diuji. Jangan melakukan migrasi destruktif pada produksi tanpa pemeriksaan dan persetujuan.
+
+19. DATA AWAL DAN PENGUJIAN
+
+Toko baru memiliki saldo Rp0, stok 0, dan tanpa transaksi fiktif. Pisahkan demo dari produksi.
+
+Uji dashboard publik, login/daftar/logout, pemulihan sesi, profil/logo, isolasi toko, peran, PIN, stok, transaksi ganda, jurnal, retur, rekonsiliasi, sinkronisasi, perangkat baru, Storage, responsivitas, kegagalan koneksi, dan backup/restore jika tersedia.
+
+Gunakan database tes untuk tes destruktif, bukan produksi.
+
+20. TAHAP IMPLEMENTASI
+
+Tahap 1: audit repository, branch, framework, dependensi, konfigurasi, error.
+Tahap 2: design system, dashboard publik, routing, login, daftar, logout.
+Tahap 3: Supabase, autentikasi, database, RLS, organisasi, toko, profil, peran, PIN.
+Tahap 4: produk, kategori, stok, pembelian, pemasok.
+Tahap 5: POS, pembayaran, transaksi, struk, retur, kasir.
+Tahap 6: akuntansi, rekonsiliasi, piutang/utang, laporan.
+Tahap 7: sinkronisasi, offline, printer, audit, backup, pemulihan.
+Tahap 8: multi-cabang dan fitur jaringan opsional.
+Tahap 9: QA keamanan, integrasi, performa, responsivitas, konsistensi.
+
+Setelah setiap tahap, jalankan build dan tes yang tersedia, periksa error, perbaiki masalah kritis, dan catat hasil aktual. Jika suatu tes tidak dapat dilakukan, tandai BELUM DIUJI dan jelaskan langkah verifikasi.
+
+21. KRITERIA SIAP PRODUKSI
+
+Jangan menyatakan siap produksi hanya karena UI selesai. Verifikasi dashboard publik, autentikasi, Supabase, RLS, isolasi toko, konsistensi stok/transaksi/jurnal, pencegahan duplikasi, audit log, sinkronisasi, penanganan error, build, dan tes.
+
+INSTRUKSI EKSEKUSI TERAKHIR
+
+Mulai dengan mengaudit project aktual di Google AI Studio. Jangan langsung menulis ulang seluruh aplikasi. Laporkan hasil audit singkat, lalu implementasikan tahap pertama yang aman.
+
+Jika repository belum diimpor, pandu pengguna. Jika Project URL atau public key belum tersedia, pandu pengguna mengambilnya dari project yang benar dan memasukkannya melalui konfigurasi aman. Jika perlu izin tambahan, jelaskan izin yang tepat, alasannya, dan langkah pengguna. Jangan meminta rahasia melalui chat.
+
+Setelah pengguna menerapkan environment variables, uji konfigurasi, inisialisasi client, koneksi, autentikasi, akses database, RLS, dan Storage jika tersedia. Laporkan setiap pemeriksaan sebagai BERHASIL, GAGAL, atau BELUM DIUJI. Jangan menganggap variabel terisi berarti koneksi berhasil.
+
+Jangan menghapus atau mereset database produksi, jangan membuat koneksi palsu, jangan mengarang hasil tes, jangan berhenti pada prototype, dan jangan menghapus pekerjaan yang sudah benar.
+
+HASIL AKHIR:
+JALORA — platform manajemen bisnis yang elegan, aman, responsif, dan terintegrasi, siap untuk operasional nyata setelah konfigurasi, pengujian, dan persyaratan deployment terpenuhi.

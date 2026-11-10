@@ -1,0 +1,6 @@
+{
+  "name": "JALORA Business Management Platform",
+  "description": "Satu Sistem, Kendali Seluruh Bisnis. Platform manajemen bisnis terpadu untuk POS, inventaris multi-cabang, akuntansi double-entry, dan rekonsiliasi kas.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
